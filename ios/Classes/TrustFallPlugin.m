@@ -15,10 +15,6 @@
     result([@"iOS " stringByAppendingString:[[UIDevice currentDevice] systemVersion]]);
   }else if ([@"isJailBroken" isEqualToString:call.method]) {
     result([NSNumber numberWithBool:[self isJailBroken]]);
-  }else if ([@"canMockLocation" isEqualToString:call.method]) {
-    //For now we have returned if device is Jail Broken or if it's not real device. There is no
-    //strong detection of Mock location in iOS
-    result([NSNumber numberWithBool:([self isJailBroken] || ![self isRealDevice])]);
   }else if ([@"isRealDevice" isEqualToString:call.method]) {
     result([NSNumber numberWithBool:[self isRealDevice]]);
   } else {

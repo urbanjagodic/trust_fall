@@ -13,7 +13,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String _platformVersion = 'Unknown';
   bool isJailBroken = false;
-  bool canMockLocation = false;
   bool isRealDevice = true;
   bool isOnExternalStorage = false;
   bool isTrustFall = false;
@@ -35,7 +34,6 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.ßß
     try{
       isJailBroken = await TrustFall.isJailBroken;
-      canMockLocation = await TrustFall.canMockLocation;
       isRealDevice = await TrustFall.isRealDevice;
       isOnExternalStorage = await TrustFall.isOnExternalStorage;
       isTrustFall = await TrustFall.isTrustFall;
@@ -45,7 +43,6 @@ class _MyAppState extends State<MyApp> {
 
     setState(() {
       isJailBroken = isJailBroken;
-      canMockLocation = canMockLocation;
       isRealDevice = isRealDevice;
       isOnExternalStorage = isOnExternalStorage;
       isTrustFall = isTrustFall;
@@ -75,19 +72,6 @@ class _MyAppState extends State<MyApp> {
                          width: 8,
                        ),
                        Text('${isJailBroken ? "Yes" : "No"}', style: TextStyle(fontWeight: FontWeight.w600),),
-                     ],
-                   ),
-                   SizedBox(
-                     height: 8,
-                   ),
-                   Row(
-                     mainAxisAlignment: MainAxisAlignment.center,
-                     children: <Widget>[
-                       Text('canMockLocation():'),
-                       SizedBox(
-                         width: 8,
-                       ),
-                       Text('${canMockLocation ? "Yes" : "No"}', style: TextStyle(fontWeight: FontWeight.w600),),
                      ],
                    ),
                    SizedBox(
